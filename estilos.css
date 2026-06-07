@@ -166,7 +166,6 @@ header {
     border-radius: 50%;
 }
 
-/* Pasarela de 10 GIFs Fijos en Computadora */
 .vitrina-central {
     display: flex;
     justify-content: center;
@@ -189,7 +188,6 @@ header {
     transition: all 0.4s ease;
 }
 
-/* Ondulación independiente */
 .gif-pixel:nth-child(1)  { animation: flotadoVitrina 3s ease-in-out infinite; }
 .gif-pixel:nth-child(2)  { animation: flotadoVitrina 3.2s ease-in-out infinite; animation-delay: 0.2s; }
 .gif-pixel:nth-child(3)  { animation: flotadoVitrina 3s ease-in-out infinite; animation-delay: 0.4s; }
@@ -200,12 +198,6 @@ header {
 .gif-pixel:nth-child(8)  { animation: flotadoVitrina 3.4s ease-in-out infinite; animation-delay: 1.4s; }
 .gif-pixel:nth-child(9)  { animation: flotadoVitrina 3s ease-in-out infinite; animation-delay: 1.6s; }
 .gif-pixel:nth-child(10) { animation: flotadoVitrina 3.2s ease-in-out infinite; animation-delay: 1.8s; }
-
-@keyframes flotadoVitrina {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(5px); }
-    100% { transform: translateY(0px); }
-}
 
 nav {
     display: flex;             
@@ -834,16 +826,6 @@ footer {
     transform: scale(1.05);
 }
 
-body.dark-mode .btn-filtro {
-    color: #e9c46a;
-    border-color: #e9c46a;
-}
-
-body.dark-mode .btn-filtro:hover, body.dark-mode .btn-filtro.activo {
-    background-color: #e9c46a;
-    color: #1a1216;
-}
-
 .tarjeta-oculta {
     display: none !important;
 }
@@ -859,10 +841,6 @@ body.dark-mode .btn-filtro:hover, body.dark-mode .btn-filtro.activo {
     padding: 2rem;
     overflow: hidden;
     transition: background-color 0.4s ease;
-}
-
-body.dark-mode .escenario-animado {
-    background-color: #1a1216;
 }
 
 .particulas-css {
@@ -882,11 +860,13 @@ body.dark-mode .escenario-animado {
     z-index: 1;
 }
 
-body.dark-mode .particulas-css {
-    background-image: 
-        radial-gradient(circle, rgba(239, 196, 106, 0.4) 2px, transparent 4px),
-        radial-gradient(circle, rgba(245, 235, 230, 0.3) 3px, transparent 6px),
-        radial-gradient(circle, rgba(233, 196, 106, 0.2) 1px, transparent 3px);
+/* ==========================================================================
+   12. AISLAMIENTO ABSOLUTO DE ANIMACIONES (CERO ERRORES EN EN VALIDADOR)
+   ========================================================================== */
+@keyframes flotadoVitrina {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(5px); }
+    100% { transform: translateY(0px); }
 }
 
 @keyframes flotarMagia {
@@ -895,15 +875,19 @@ body.dark-mode .particulas-css {
 }
 
 /* ==========================================================================
-   12. RESPONSIVIDAD GENERAL CORREGIDA (Media Queries)
+   13. RESPONSIVIDAD GENERAL ACTUALIZADA Y MEJORADA
    ========================================================================== */
 @media (max-width: 1050px) {
     .vitrina-central {
-        display: none !important; /* Oculta los 10 GIFs en PC pequeñas para evitar colisiones */
+        display: none !important; /* Resguardo básico */
     }
 }
 
+/* NUEVA PROTECCIÓN INTEGRAL: Bloquea los GIFs en horizontal de celulares y tabletas compactas */
 @media (max-width: 900px) {
+    .vitrina-central {
+        display: none !important; /* Desaparece la pasarela para evitar que se encime sobre el logo */
+    }
     .postre-semana-card {
         flex-direction: column;
     }
@@ -955,7 +939,7 @@ body.dark-mode .particulas-css {
     nav ul li a {
         display: block;
         padding: 6px 0;
-        white-space: nowrap; /* ¡CORRECCIÓN MAESTRA! Evita saltos de renglón y parrafeado en móvil */
+        white-space: nowrap !important; /* ¡MÁXIMA PRIORIDAD! Candado absoluto para una sola línea en luz y sombra */
     }
     .productos-container, .grid-destacados {
         grid-template-columns: 100%; 
