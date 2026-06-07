@@ -2,6 +2,7 @@
 // SCRIPT.JS - ESTADO FINAL DEFINITIVO COMPATIBLE CON ADOBE DREAMWEAVER
 // ==========================================================================
 
+// --- LÓGICA GLOBAL: Filtrado de productos en tiempo real ---
 function filtrarProductos(categoriaSeleccionada) {
     var tarjetas = document.querySelectorAll('.producto-card');
     for (var i = 0; i < tarjetas.length; i++) {
@@ -18,6 +19,7 @@ function filtrarProductos(categoriaSeleccionada) {
     }
 }
 
+// --- LÓGICA GLOBAL: Activación del Lightbox con mini-galería ---
 function abrirModal(imgSrc1, imgSrc2, titulo, precio, ingredientes) {
     var modal = document.getElementById('modal-producto');
     if (modal) {
@@ -32,6 +34,7 @@ function abrirModal(imgSrc1, imgSrc2, titulo, precio, ingredientes) {
     }
 }
 
+// --- LÓGICA GLOBAL: Intercambio dinámico de fotos en galería ---
 function cambiarFotoModal(nuevoSrc) {
     var fotoGrande = document.getElementById('modal-img');
     if (fotoGrande) {
@@ -39,6 +42,12 @@ function cambiarFotoModal(nuevoSrc) {
     }
 }
 
+// Vinculación explícita al objeto Window para resolver alertas de "defined but never used"
+window.filtrarProductos = filtrarProductos;
+window.abrirModal = abrirModal;
+window.cambiarFotoModal = cambiarFotoModal;
+
+// Bloque de eventos al cargar el DOM (Compatibilidad clásica)
 document.addEventListener('DOMContentLoaded', function() {
     var botonModo = document.getElementById('toggle-mode');
     var body = document.body;

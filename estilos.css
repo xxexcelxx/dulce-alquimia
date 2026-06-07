@@ -43,7 +43,7 @@ body.dark-mode .btn-mode {
 
 body.dark-mode .gif-pixel {
     opacity: 1;
-    filter: drop-shadow(0 0 6px rgba(233, 196, 106, 0.7)); /* Encendido de neón oro en la pasarela */
+    filter: drop-shadow(0 0 6px rgba(233, 196, 106, 0.7)); 
 }
 
 body.dark-mode .nuestra-historia,
@@ -166,23 +166,22 @@ header {
     border-radius: 50%;
 }
 
-
-/* --- ARQUITECTURA MAESTRA DE LA REFUERZO CENTRAL DE 10 GIFs --- */
+/* Pasarela de 10 GIFs Fijos en Computadora */
 .vitrina-central {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px; /* Estrechamos ligeramente el gap horizontal para encajar las 10 piezas limpiamente */
+    gap: 10px; 
     position: absolute;
     left: 50%;
     transform: translateX(-50%); 
     height: 100%;
-    max-width: 45%; /* Evita que choque con los laterales en pantallas medianas */
+    max-width: 45%; 
     pointer-events: none; 
 }
 
 .gif-pixel {
-    width: 35px; /* Ajustamos el tamaño a 35px para una visualización perfectamente proporcionada */
+    width: 35px; 
     height: 35px;
     object-fit: contain;
     image-rendering: pixelated; 
@@ -190,7 +189,7 @@ header {
     transition: all 0.4s ease;
 }
 
-/* Ondulación de vaivén escalonada para que los 10 postres bailen armónicamente */
+/* Ondulación independiente */
 .gif-pixel:nth-child(1)  { animation: flotadoVitrina 3s ease-in-out infinite; }
 .gif-pixel:nth-child(2)  { animation: flotadoVitrina 3.2s ease-in-out infinite; animation-delay: 0.2s; }
 .gif-pixel:nth-child(3)  { animation: flotadoVitrina 3s ease-in-out infinite; animation-delay: 0.4s; }
@@ -896,11 +895,11 @@ body.dark-mode .particulas-css {
 }
 
 /* ==========================================================================
-   12. RESPONSIVIDAD GENERAL (Media Queries)
+   12. RESPONSIVIDAD GENERAL CORREGIDA (Media Queries)
    ========================================================================== */
 @media (max-width: 1050px) {
     .vitrina-central {
-        display: none !important; /* Esconde los 10 GIFs en portátiles compactos antes de colisionar */
+        display: none !important; /* Oculta los 10 GIFs en PC pequeñas para evitar colisiones */
     }
 }
 
@@ -933,17 +932,30 @@ body.dark-mode .particulas-css {
 @media (max-width: 500px) {
     header {
         position: static; 
+        height: auto;
+        padding: 1rem;
     }
     .wrapper-contenido {
         margin-top: 0;
     }
     nav {
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
+        width: 100%;
     }
     nav ul {
         flex-direction: column; 
         text-align: center;
+        gap: 10px;
+        width: 100%;
+    }
+    nav ul li {
+        width: 100%;
+    }
+    nav ul li a {
+        display: block;
+        padding: 6px 0;
+        white-space: nowrap; /* ¡CORRECCIÓN MAESTRA! Evita saltos de renglón y parrafeado en móvil */
     }
     .productos-container, .grid-destacados {
         grid-template-columns: 100%; 
